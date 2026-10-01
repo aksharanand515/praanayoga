@@ -1,0 +1,50 @@
+/* Self-hosted, subsetted by scripts/fonts.mjs.
+   Newsreader (Production Type) and Instrument Sans (Rodrigo Fuenzalida),
+   Noto Serif Malayalam (Google): SIL Open Font License 1.1. */
+@font-face {
+  font-family: 'Newsreader Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('./fonts/newsreader-latin-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+2000-206F, U+2190-2193, U+2212;
+}
+@font-face {
+  font-family: 'Newsreader Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('./fonts/newsreader-ext-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-024F, U+1E00-1EFF;
+}
+@font-face {
+  font-family: 'Newsreader Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('./fonts/newsreader-latin-italic.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+2000-206F, U+2190-2193, U+2212;
+}
+@font-face {
+  font-family: 'Newsreader Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('./fonts/newsreader-ext-italic.woff2') format('woff2-variations');
+  unicode-range: U+0100-024F, U+1E00-1EFF;
+}
+@font-face {
+  font-family: 'Instrument Sans Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 700;
+  src: url('./fonts/instrument-sans-latin.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Noto Serif Malayalam Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('./fonts/noto-serif-malayalam.woff2') format('woff2-variations');
+  unicode-range: U+0D00-0D7F, U+200C-200D, U+25CC;
+}
