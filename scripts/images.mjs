@@ -16,6 +16,7 @@ const OUT = path.join(root, 'public/img');
 
 // extract: { left, top, width, height } in source pixels
 const images = [
+  { name: 'hall', file: 'hall-teaching.jpg', widths: [800, 1280] },
   { name: 'savasana', file: 'IMG_20240216_105354_539-1.jpg', widths: [800, 1200, 1600] },
   { name: 'prasarita', file: 'IMG_20240209_101652_959-1.jpg', widths: [640, 1000, 1400] },
   { name: 'nithin-portrait', file: '5dd0f486-1037-45ac-9184-0836d25447b4.jpg', widths: [560, 900, 1113] },
@@ -55,7 +56,7 @@ for (const img of images) {
 }
 
 // Open Graph card (1200x630, JPEG for maximum compatibility)
-await sharp(path.join(SRC, 'IMG_20240216_105354_539-1.jpg'))
+await sharp(path.join(SRC, 'hall-teaching.jpg'))
   .resize(1200, 630, { fit: 'cover', position: 'centre' })
   .jpeg({ quality: 82, mozjpeg: true })
   .toFile(path.join(root, 'public/og-image.jpg'));

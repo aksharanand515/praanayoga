@@ -1,4 +1,12 @@
 {
+  "hall": {
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      800,
+      1280
+    ]
+  },
   "savasana": {
     "width": 1600,
     "height": 1200,

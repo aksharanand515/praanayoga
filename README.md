@@ -19,23 +19,19 @@ characters (e.g. new Sanskrit words).
 - `index.html` — all content and SEO (meta, Open Graph, JSON-LD). `<x-pic>` and
   `<x-icon>` are build-time shorthands expanded by `vite.config.js` into static
   `<picture>` / inline SVG markup.
-- `src/styles.css` — design tokens and layout in a Kerala palette: kasavu ivory
-  and zari gold, teak night, the studio's laterite red, mural green. Gold
-  `.kasavu` bands mark section edges; section numbers are Malayalam numerals.
-- `src/hero-gl.js` — the hero scene in raw WebGL (one full-screen triangle, one
-  fragment shader, ~5 KB): a nilavilakku flame is lit, its light reveals the
-  framed photograph, photographs breathe on a 4 s in / 6 s out pranayama rhythm
-  and pass into one another through an ember-edged dissolve. Pauses offscreen
-  and on hidden tabs, survives context loss, and has a Pause control.
-- `src/main.js` — motion: GSAP + ScrollTrigger, Lenis smooth scroll, the lamp
-  intro, the frame opening to full bleed with the story sliding over it, the
-  Malayalam mantra band, the horizontal workshops track, the philosophy
-  sequence, nav theming, mobile menu and the booking letter (composes an email).
+- `src/styles.css` — design tokens and layout. Palette: Warm Ivory #F5F0E7,
+  Warm White #FCFAF5, Soft Sand #E6DDCE, Muted Sage #8C9680, Deep Olive #4B5540,
+  Terracotta #B8755A (accents; #8E5139 for small text, for contrast) and
+  Charcoal Brown #292824. Serif headings (Newsreader), sans body (Instrument
+  Sans), outline pill buttons.
+- `src/main.js` — motion: GSAP + ScrollTrigger and Lenis smooth scroll. Hero
+  intro and scroll parallax, word-by-word heading reveals, image reveals,
+  staggered cards, nav states (transparent over the hero, olive over olive
+  sections), mobile menu and the booking letter (composes an email).
 
-Accessibility: everything is readable with JavaScript off, and without WebGL the
-framed poster image stands in. `prefers-reduced-motion` skips the lamp intro,
-smooth scrolling and all scroll-driven animation. Split headings keep an
-unsplit copy for screen readers.
+Accessibility: everything is readable with JavaScript off, and
+`prefers-reduced-motion` turns off smooth scrolling and all animation. Split
+headings keep an unsplit copy for screen readers.
 
 ## Content sources
 
@@ -46,7 +42,8 @@ unsplit copy for screen readers.
 
 ## Media provenance
 
-- Studio photographs: Praana Yoga Studio's own images, as published on praanayoga.com.
+- Studio photographs: Praana Yoga Studio's own images (hero: the hall, supplied
+  by the studio; others as published on praanayoga.com).
 - `retreat-*`, `kathakali`, `sea-sunset`, `kochi-golden` photographs: Samya
   Retreats' own library (samyaretreats.com), Nithin's retreat programme.
 - Fonts (SIL OFL 1.1): Newsreader, Instrument Sans, Noto Serif Malayalam.
