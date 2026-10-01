@@ -1,4 +1,28 @@
 {
+  "hall": {
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      800,
+      1280
+    ]
+  },
+  "garden-group": {
+    "width": 977,
+    "height": 1170,
+    "widths": [
+      640,
+      977
+    ]
+  },
+  "private-adjustment": {
+    "width": 936,
+    "height": 1170,
+    "widths": [
+      640,
+      936
+    ]
+  },
   "savasana": {
     "width": 1600,
     "height": 1200,
