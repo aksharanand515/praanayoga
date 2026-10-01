@@ -17,10 +17,11 @@ const OUT = path.join(root, 'public/img');
 // extract: { left, top, width, height } in source pixels
 const images = [
   { name: 'hall', file: 'hall-teaching.jpg', widths: [800, 1280] },
-  { name: 'gallery-shala', file: 'samya-yoga-shala.webp', extract: { left: 0, top: 450, width: 768, height: 768 }, widths: [480, 768] },
-  { name: 'gallery-tea', file: 'samya-munnar-tea-estate.webp', extract: { left: 0, top: 298, width: 768, height: 768 }, widths: [480, 768] },
-  { name: 'gallery-sea', file: 'samya-sea-sunset.webp', extract: { left: 0, top: 248, width: 640, height: 640 }, widths: [480, 640] },
-  { name: 'gallery-lake', file: 'samya-mirror-water-kayak.webp', extract: { left: 0, top: 249, width: 640, height: 640 }, widths: [480, 640] },
+  // Instagram posts from @praanayoga (grid-size images as served by Instagram)
+  { name: 'ig-Dd1XXhnzj9e', file: 'ig-Dd1XXhnzj9e.jpg', extract: { left: 0, top: 140, width: 361, height: 361 }, widths: [361] },
+  { name: 'ig-DbucupORmQ7', file: 'ig-DbucupORmQ7.jpg', extract: { left: 0, top: 37, width: 565, height: 565 }, widths: [565] },
+  { name: 'ig-Da_-wo4R-0u', file: 'ig-Da_-wo4R-0u.jpg', widths: [480, 640] },
+  { name: 'ig-DbDsSRjR7WZ', file: 'ig-DbDsSRjR7WZ.jpg', extract: { left: 0, top: 26, width: 588, height: 588 }, widths: [588] },
   { name: 'japan-class', file: 'japan-class.jpg', extract: { left: 880, top: 0, width: 900, height: 1125 }, widths: [600, 900] },
   { name: 'nithin-studio', file: 'nithin-studio-portrait.jpg', extract: { left: 0, top: 0, width: 960, height: 1200 }, widths: [640, 960] },
   { name: 'one-arm-handstand', file: 'one-arm-handstand.jpg', extract: { left: 0, top: 230, width: 680, height: 850 }, widths: [560, 680], grade: 'warm' },
