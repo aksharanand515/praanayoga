@@ -7,6 +7,46 @@
       1280
     ]
   },
+  "japan-class": {
+    "width": 900,
+    "height": 1125,
+    "widths": [
+      600,
+      900
+    ]
+  },
+  "nithin-studio": {
+    "width": 960,
+    "height": 1200,
+    "widths": [
+      640,
+      960
+    ]
+  },
+  "one-arm-handstand": {
+    "width": 680,
+    "height": 850,
+    "widths": [
+      560,
+      680
+    ]
+  },
+  "standing-splits": {
+    "width": 843,
+    "height": 1054,
+    "widths": [
+      640,
+      843
+    ]
+  },
+  "pranayama-grass": {
+    "width": 731,
+    "height": 914,
+    "widths": [
+      560,
+      731
+    ]
+  },
   "garden-group": {
     "width": 977,
     "height": 1170,
