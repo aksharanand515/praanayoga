@@ -1,0 +1,132 @@
+{
+  "savasana": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      800,
+      1200,
+      1600
+    ]
+  },
+  "prasarita": {
+    "width": 1600,
+    "height": 2000,
+    "widths": [
+      640,
+      1000,
+      1400
+    ]
+  },
+  "nithin-portrait": {
+    "width": 1113,
+    "height": 1280,
+    "widths": [
+      560,
+      900,
+      1113
+    ]
+  },
+  "nithin-pose": {
+    "width": 1080,
+    "height": 1350,
+    "widths": [
+      560,
+      860,
+      1080
+    ]
+  },
+  "group-sun": {
+    "width": 1050,
+    "height": 1050,
+    "widths": [
+      560,
+      1050
+    ]
+  },
+  "group-japan": {
+    "width": 925,
+    "height": 840,
+    "widths": [
+      560,
+      925
+    ]
+  },
+  "group-four": {
+    "width": 879,
+    "height": 879,
+    "widths": [
+      560,
+      879
+    ]
+  },
+  "handstand": {
+    "width": 756,
+    "height": 660,
+    "widths": [
+      560,
+      756
+    ]
+  },
+  "group-five": {
+    "width": 756,
+    "height": 740,
+    "widths": [
+      560,
+      756
+    ]
+  },
+  "retreat-ridge": {
+    "width": 2048,
+    "height": 1536,
+    "widths": [
+      800,
+      1400,
+      2048
+    ]
+  },
+  "retreat-sunrise": {
+    "width": 1200,
+    "height": 980,
+    "widths": [
+      640,
+      1200
+    ]
+  },
+  "retreat-guidance": {
+    "width": 768,
+    "height": 1024,
+    "widths": [
+      560,
+      768
+    ]
+  },
+  "kathakali": {
+    "width": 510,
+    "height": 760,
+    "widths": [
+      510
+    ]
+  },
+  "sea-sunset": {
+    "width": 640,
+    "height": 1137,
+    "widths": [
+      640
+    ]
+  },
+  "kochi-golden": {
+    "width": 640,
+    "height": 1138,
+    "widths": [
+      640
+    ]
+  },
+  "retreat-founders": {
+    "width": 1804,
+    "height": 1704,
+    "widths": [
+      640,
+      1100
+    ]
+  }
+}
