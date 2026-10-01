@@ -248,8 +248,12 @@ function initHero() {
   const toggle = $('[data-breath-toggle]', hero);
   const tweens = [];
 
+  // The first slide reuses whatever the poster <picture> already chose and preloaded.
+  const poster = $('.hero__poster img', hero);
+  const slides = SLIDES.map((s, i) => (i === 0 && poster?.currentSrc ? { ...s, src: poster.currentSrc } : s));
+
   const gl = createHeroGL({
-    canvas, frame, slides: SLIDES,
+    canvas, frame, slides,
     onSlide: (i) => {
       tweens.push(gsap.timeline()
         .to([slideIndex, slideCaption], { autoAlpha: 0, y: -8, duration: 0.45, ease: 'power2.in' })
@@ -298,24 +302,34 @@ function initHero() {
 
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   const fonts = document.fonts?.ready ?? Promise.resolve();
-  let revealed = false;
-  const reveal = () => {
-    if (revealed) return;
-    revealed = true;
-    count.textContent = '100';
+  // Phase one: the page opens on time, whatever the network or device is doing.
+  let opened = false;
+  const open = (at) => {
+    if (opened) return;
+    opened = true;
     const tl = gsap.timeline()
       .to(loader, { autoAlpha: 0, duration: 0.6, ease: 'power2.out' }, 0)
+      .add(() => lenis?.start(), at);
+    showContent(tl, at);
+    tweens.push(tl);
+  };
+  // Phase two: the lamp's light reveals the photograph, only once it is truly ready.
+  // Until then the flame keeps burning in the frame, so it is never revealed empty.
+  let lit = false;
+  const light = () => {
+    if (lit) return;
+    lit = true;
+    count.textContent = '100';
+    tweens.push(gsap.timeline()
       .to(gl.state, { flameLift: 1, duration: 1.6, ease: 'power2.inOut' }, 0)
       .to(gl.state, { reveal: 1, duration: 2.4, ease: 'power3.inOut' }, 0.1)
       .to(gl.state, { flame: 0, duration: 1.3, ease: 'power2.in' }, 0.8)
-      .add(() => { lenis?.start(); }, 0.9)
-      .add(() => gl.revealed(), 2.2);
-    showContent(tl, 0.9);
-    tweens.push(tl);
+      .add(() => gl.revealed(), 2.2));
   };
-  Promise.race([Promise.all([gl.ready, fonts, wait(1500)]), wait(3500)])
-    .then(reveal)
-    .catch(() => { hero.classList.remove('gl-on'); gl.state.flame = 0; reveal(); });
+  // If the first photograph never arrives, the framed poster stands in.
+  const fail = () => { hero.classList.remove('gl-on'); gl.state.flame = 0; open(0.3); };
+  Promise.all([gl.ready, fonts, wait(1500)]).then(() => { open(0.9); light(); }, fail);
+  wait(3500).then(() => open(0.3)); // never hold the page longer than this
 
   const onFail = () => hero.classList.remove('gl-on');
   canvas.addEventListener('gl-failed', onFail);

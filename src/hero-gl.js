@@ -195,7 +195,11 @@ export function createHeroGL({ canvas, frame, slides, onSlide }) {
   gl.uniform1i(u.uTexB, 1);
   gl.uniform1f(u.uSeed, 3.1);
 
-  const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+  // Render scale: starts at the device pixel ratio (capped) and steps down on slow devices.
+  let dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+  const MIN_DPR = 0.5;
+  let frameCost = 1 / 60;
+  let frameCount = 0;
 
   // Public, tweenable state.
   const state = { reveal: 0, flame: 0, open: 0, flameLift: 0 };
@@ -308,6 +312,15 @@ export function createHeroGL({ canvas, frame, slides, onSlide }) {
     const dt = Math.min(0.05, (now - (last || now)) / 1000);
     last = now;
     if (playing || !revealDone) time += dt; // paused: the scene holds perfectly still
+
+    // Adaptive resolution: if frames run long, render fewer pixels.
+    frameCost += (dt - frameCost) * 0.08;
+    if (++frameCount > 40 && frameCost > 1 / 30 && dpr > MIN_DPR) {
+      dpr = Math.max(MIN_DPR, dpr * 0.75);
+      frameCount = 0;
+      frameCost = 1 / 60;
+      measure();
+    }
 
     if (playing && revealDone) {
       breathClock += dt;
