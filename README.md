@@ -14,6 +14,14 @@ npm run preview   # serve the production build
 characters used on the page — run it after changing copy that adds new
 characters (e.g. new Sanskrit words).
 
+`npm run logo` rebuilds the brand assets in `public/brand/` (transparent full-colour
+and light versions of the logo) and the favicons from `assets/originals/logo.webp`.
+
+Enquiries go to WhatsApp (+91 80899 48747): the booking form, the private-session
+button, the floating chat button and the footer all open `wa.me/918089948747`,
+the form with the message pre-written. The number lives in `WHATSAPP` in
+`src/main.js` and in the links in `index.html`.
+
 ## Structure
 
 - `index.html` — all content and SEO (meta, Open Graph, JSON-LD). `<x-pic>` and
@@ -27,7 +35,7 @@ characters (e.g. new Sanskrit words).
 - `src/main.js` — motion: GSAP + ScrollTrigger and Lenis smooth scroll. Hero
   intro and scroll parallax, word-by-word heading reveals, image reveals,
   staggered cards, nav states (transparent over the hero, olive over olive
-  sections), mobile menu and the booking letter (composes an email).
+  sections), mobile menu and the WhatsApp enquiry (class and day choices, live preview).
 
 Accessibility: everything is readable with JavaScript off, and
 `prefers-reduced-motion` turns off smooth scrolling and all animation. Split

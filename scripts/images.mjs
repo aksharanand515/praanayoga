@@ -17,6 +17,10 @@ const OUT = path.join(root, 'public/img');
 // extract: { left, top, width, height } in source pixels
 const images = [
   { name: 'hall', file: 'hall-teaching.jpg', widths: [800, 1280] },
+  { name: 'nithin-studio', file: 'nithin-studio-portrait.jpg', extract: { left: 0, top: 0, width: 960, height: 1200 }, widths: [640, 960] },
+  { name: 'one-arm-handstand', file: 'one-arm-handstand.jpg', extract: { left: 0, top: 230, width: 680, height: 850 }, widths: [560, 680], grade: 'warm' },
+  { name: 'standing-splits', file: 'standing-splits.jpg', extract: { left: 0, top: 50, width: 843, height: 1054 }, widths: [640, 843] },
+  { name: 'pranayama-grass', file: 'pranayama-grass.jpg', extract: { left: 0, top: 300, width: 731, height: 914 }, widths: [560, 731] },
   { name: 'garden-group', file: 'garden-group.jpg', extract: { left: 0, top: 0, width: 977, height: 1170 }, widths: [640, 977] },
   { name: 'private-adjustment', file: 'private-adjustment.webp', extract: { left: 0, top: 470, width: 936, height: 1170 }, widths: [640, 936] },
   { name: 'savasana', file: 'IMG_20240216_105354_539-1.jpg', widths: [800, 1200, 1600] },
@@ -44,6 +48,11 @@ for (const img of images) {
   const base = () => {
     let p = sharp(path.join(SRC, img.file)).rotate();
     if (img.extract) p = p.extract(img.extract);
+    if (img.grade === 'warm') {
+      p = p.modulate({ saturation: 0.72, brightness: 1.04 })
+        .recomb([[1.06, 0.04, 0], [0.02, 1.0, 0], [0, 0.02, 0.88]])
+        .linear(0.94, 10);
+    }
     return p;
   };
   const meta = await base().toBuffer({ resolveWithObject: true });

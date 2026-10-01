@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "images": "node scripts/images.mjs",
     "fonts": "node scripts/fonts.mjs",
-    "deploy": "node scripts/deploy.mjs"
+    "deploy": "node scripts/deploy.mjs",
+    "logo": "node scripts/logo.mjs"
   },
   "author": "",
   "license": "ISC",

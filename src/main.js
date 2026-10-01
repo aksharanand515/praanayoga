@@ -164,6 +164,7 @@ const menu = (() => {
     btn.setAttribute('aria-expanded', 'true');
     label.textContent = 'Close';
     nav.classList.add('is-menu');
+    root.classList.add('is-menu-open');
     nav.classList.remove('is-hidden');
     lenis?.stop();
     document.body.style.overflow = 'hidden';
@@ -177,6 +178,7 @@ const menu = (() => {
     btn.setAttribute('aria-expanded', 'false');
     label.textContent = 'Menu';
     nav.classList.remove('is-menu');
+    root.classList.remove('is-menu-open');
     lenis?.start();
     document.body.style.overflow = '';
     document.removeEventListener('keydown', onKey);
@@ -324,68 +326,118 @@ function initReveals() {
   });
 }
 
-/* ----------------------------------------------------------- the letter */
-function initLetter() {
-  const form = $('[data-letter]');
-  const status = $('[data-letter-status]');
-  const date = form.elements.date;
+/* -------------------------------------------------------- the enquiry */
+const WHATSAPP = '918089948747';
+
+function initEnquiry() {
+  const form = $('[data-enquiry]');
+  const status = $('[data-enquiry-status]');
+  const dayGroup = $('[data-day-group]', form);
+  const days = $('[data-days]', form);
+  const other = form.elements.date;
+  const name = form.elements.name;
+  const preview = Object.fromEntries($$('[data-preview]', form).map((el) => [el.dataset.preview, el]));
+  const defaultStatus = status.innerHTML;
+
+  // The next seven days as choices; "Another date" stays for anything further out.
   const today = new Date();
-  date.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-  status.setAttribute('aria-live', 'polite');
-  const defaultText = status.textContent;
+  today.setHours(0, 0, 0, 0);
+  const iso = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  other.min = iso(today);
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() + i);
+    const label = document.createElement('label');
+    label.className = 'day';
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'day';
+    input.value = iso(d);
+    const long = d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+    input.setAttribute('aria-label', i === 0 ? `Today, ${long}` : i === 1 ? `Tomorrow, ${long}` : long);
+    const body = document.createElement('span');
+    body.className = 'day__body';
+    body.setAttribute('aria-hidden', 'true');
+    const dow = i === 0 ? 'Today' : i === 1 ? 'Tmrw' : d.toLocaleDateString('en-GB', { weekday: 'short' });
+    body.innerHTML = `<span class="day__dow">${dow}</span><span class="day__num">${d.getDate()}</span><span class="day__mon">${d.toLocaleDateString('en-GB', { month: 'short' })}</span>`;
+    label.append(input, body);
+    days.append(label);
+  }
 
-  // A select is as wide as its longest option; size it to the chosen one so the sentence reads naturally.
-  const select = form.elements.session;
-  const ruler = document.createElement('span');
-  ruler.setAttribute('aria-hidden', 'true');
-  ruler.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;pointer-events:none';
-  select.after(ruler);
-  const fitSelect = () => {
-    ruler.style.font = getComputedStyle(select).font;
-    ruler.textContent = select.options[select.selectedIndex].text;
-    select.style.width = `calc(${ruler.offsetWidth}px + 1.5em)`;
+  const chosenDate = () => {
+    const picked = form.querySelector('input[name="day"]:checked');
+    const value = picked ? picked.value : other.value;
+    return value ? new Date(`${value}T00:00`) : null;
   };
-  select.addEventListener('change', fitSelect);
-  document.fonts?.ready.then(fitSelect);
-  window.addEventListener('resize', fitSelect);
-  fitSelect();
+  const describe = (d) => d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+  const session = () => form.querySelector('input[name="session"]:checked').value;
 
-  const clear = (input) => {
-    input.closest('.field').classList.remove('is-invalid');
-    input.removeAttribute('aria-invalid');
+  const update = () => {
+    const d = chosenDate();
+    preview.session.textContent = session();
+    preview.day.textContent = d ? describe(d) : '…';
+    preview.name.textContent = name.value.trim() || '…';
   };
-  [form.elements.name, date].forEach((input) => input.addEventListener('input', () => clear(input)));
+
+  const settle = () => {
+    if (status.classList.contains('is-error') && chosenDate() && name.value.trim()) {
+      status.classList.remove('is-error');
+      status.innerHTML = defaultStatus;
+    }
+  };
+
+  form.addEventListener('change', (e) => {
+    if (e.target.name === 'day') other.value = '';
+    if (e.target === other && other.value) form.querySelectorAll('input[name="day"]').forEach((r) => { r.checked = false; });
+    if (e.target.name === 'day' || e.target === other) dayGroup.classList.remove('is-invalid');
+    update();
+    settle();
+  });
+  name.addEventListener('input', () => { name.classList.remove('is-invalid'); name.removeAttribute('aria-invalid'); update(); settle(); });
+  update();
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = form.elements.name.value.trim();
-    const session = select.value;
+    const d = chosenDate();
+    const who = name.value.trim();
     const missing = [];
-    if (!date.value) missing.push(date);
-    if (!name) missing.push(form.elements.name);
-    missing.forEach((input) => {
-      input.closest('.field').classList.add('is-invalid');
-      input.setAttribute('aria-invalid', 'true');
-    });
+    if (!d) { dayGroup.classList.add('is-invalid'); missing.push('a day'); }
+    if (!who) { name.classList.add('is-invalid'); name.setAttribute('aria-invalid', 'true'); missing.push('your name'); }
     if (missing.length) {
-      status.textContent = missing.length === 2 ? 'Please add a date and your name.' : missing[0] === date ? 'Please choose a date.' : 'Please add your name.';
+      status.textContent = `Please choose ${missing.join(' and ')}.`;
       status.classList.add('is-error');
-      missing[0].focus();
+      (d ? name : form.querySelector('input[name="day"]')).focus();
       return;
     }
-    const when = new Date(`${date.value}T00:00`).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-    const subject = `Booking: ${session} on ${when}`;
-    const body = `Hello Nithin,\n\nI would like to join ${session} on ${when}.\n\nMy name is ${name}.\n\nThank you,\n${name}`;
+    const message = `Hello Nithin, I'd like to join ${session()} on ${describe(d)}. My name is ${who}.`;
+    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
     status.classList.remove('is-error');
-    status.textContent = 'Opening your email app… If nothing happens, write to edmindnithin47@gmail.com.';
-    window.location.href = `mailto:edmindnithin47@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setTimeout(() => { if (!status.classList.contains('is-error')) status.textContent = defaultText; }, 9000);
+    status.textContent = 'Opening WhatsApp with your message…';
+    const win = window.open(url, '_blank', 'noopener');
+    if (!win) window.location.href = url;
+    setTimeout(() => { if (!status.classList.contains('is-error')) status.innerHTML = defaultStatus; }, 8000);
+  });
+}
+
+// The floating WhatsApp button appears once the hero has been passed.
+function initWhatsAppFloat() {
+  const btn = $('[data-wa-float]');
+  ScrollTrigger.create({
+    trigger: hero,
+    start: 'bottom 80%',
+    onEnter: () => btn.classList.add('is-visible'),
+    onLeaveBack: () => btn.classList.remove('is-visible'),
+  });
+  ScrollTrigger.create({
+    trigger: '.footer',
+    start: 'top 85%',
+    onToggle: (self) => btn.classList.toggle('is-tucked', self.isActive),
   });
 }
 
 /* ---------------------------------------------------------------- boot */
 $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
-initLetter();
+initEnquiry();
 
 const mm = gsap.matchMedia();
 mm.add(MOTION, () => {
@@ -406,6 +458,7 @@ mm.add(REDUCED, () => {
 });
 
 initNavState();
+initWhatsAppFloat();
 onScrollNav();
 
 const refresh = () => ScrollTrigger.refresh();
