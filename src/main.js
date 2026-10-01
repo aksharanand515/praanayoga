@@ -98,7 +98,7 @@ document.addEventListener('click', (e) => {
 /* ---------------------------------------------------------------- nav */
 const nav = $('[data-nav]');
 const hero = $('.hero');
-const navLinks = $$('.nav__side a:not(.pill)');
+const navLinks = $$('.nav__side a:not(.btn)');
 
 // Transparent over the hero; a solid bar afterwards, olive over olive sections.
 function initNavState() {
@@ -215,11 +215,46 @@ function initHero() {
     .to(media, { yPercent: 18 }, 0)
     .to(content, { yPercent: -18, autoAlpha: 0 }, 0);
 
+  // The photograph leans gently away from the pointer and the words answer it.
+  const shift = $('[data-hero-drift]', hero);
+  let onMove = null;
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const px = gsap.quickTo(shift, 'xPercent', { duration: 1.8, ease: 'power3' });
+    const py = gsap.quickTo(shift, 'yPercent', { duration: 1.8, ease: 'power3' });
+    const tx = gsap.quickTo(content, 'x', { duration: 1.8, ease: 'power3' });
+    onMove = (e) => {
+      const nx = e.clientX / window.innerWidth - 0.5;
+      const ny = e.clientY / window.innerHeight - 0.5;
+      px(nx * -2.4);
+      py(ny * -2.4);
+      tx(nx * 12);
+    };
+    hero.addEventListener('pointermove', onMove);
+  }
+
   return () => {
     intro.kill();
     drift.kill();
-    gsap.set([media, content, title, ...fades, ...words], { clearProps: 'all' });
+    if (onMove) hero.removeEventListener('pointermove', onMove);
+    gsap.set([media, shift, content, title, ...fades, ...words], { clearProps: 'all' });
   };
+}
+
+/* ------------------------------------------------------ magnetic buttons */
+function initMagnetic() {
+  const els = $$('[data-magnetic]');
+  const move = (e) => {
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    gsap.to(el, { x: (e.clientX - (r.left + r.width / 2)) * 0.18, y: (e.clientY - (r.top + r.height / 2)) * 0.3, duration: 0.6, ease: 'power3.out' });
+  };
+  const leave = (e) => gsap.to(e.currentTarget, { x: 0, y: 0, duration: 1, ease: 'elastic.out(1, 0.45)' });
+  els.forEach((el) => { el.addEventListener('pointermove', move); el.addEventListener('pointerleave', leave); });
+  return () => els.forEach((el) => {
+    el.removeEventListener('pointermove', move);
+    el.removeEventListener('pointerleave', leave);
+    gsap.set(el, { clearProps: 'transform' });
+  });
 }
 
 /* ------------------------------------------------------- scroll reveals */
@@ -364,6 +399,7 @@ mm.add(MOTION, () => {
     root.classList.remove('motion', 'intro');
   };
 });
+mm.add(`${MOTION} and (hover: hover) and (pointer: fine)`, () => initMagnetic());
 mm.add(REDUCED, () => {
   // Everything is already in its final, readable state; nothing to animate.
   root.classList.remove('motion', 'intro');

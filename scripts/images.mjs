@@ -17,6 +17,8 @@ const OUT = path.join(root, 'public/img');
 // extract: { left, top, width, height } in source pixels
 const images = [
   { name: 'hall', file: 'hall-teaching.jpg', widths: [800, 1280] },
+  { name: 'garden-group', file: 'garden-group.jpg', extract: { left: 0, top: 0, width: 977, height: 1170 }, widths: [640, 977] },
+  { name: 'private-adjustment', file: 'private-adjustment.webp', extract: { left: 0, top: 470, width: 936, height: 1170 }, widths: [640, 936] },
   { name: 'savasana', file: 'IMG_20240216_105354_539-1.jpg', widths: [800, 1200, 1600] },
   { name: 'prasarita', file: 'IMG_20240209_101652_959-1.jpg', widths: [640, 1000, 1400] },
   { name: 'nithin-portrait', file: '5dd0f486-1037-45ac-9184-0836d25447b4.jpg', widths: [560, 900, 1113] },

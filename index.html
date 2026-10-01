@@ -85,7 +85,7 @@
         <li><a href="#teacher">Teacher</a></li>
         <li><a href="#voices">Reviews</a></li>
       </ul>
-      <a class="pill pill--sm pill--light nav__cta" href="#visit">Book now</a>
+      <x-btn href="#visit" variant="light" size="sm" class="nav__cta">Book now</x-btn>
     </div>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu">
       <span class="nav__toggle-bars" aria-hidden="true"></span>
@@ -115,15 +115,17 @@
     <!-- ─────────────────────────────── Hero -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero__media" data-hero-media>
+        <div class="hero__drift" data-hero-drift>
         <x-pic name="hall" class="hero__pic" sizes="100vw" eager alt="Nithin Xavier demonstrates a pose for a full class on the red floor of the Praana rooftop studio, morning light and trees beyond the open walls"></x-pic>
+        </div>
       </div>
       <div class="hero__veil" aria-hidden="true"></div>
       <div class="hero__content" data-hero-content>
         <p class="hero__eyebrow" data-hero-fade>Fort Kochi <span aria-hidden="true">·</span> Kerala</p>
-        <h1 class="hero__title" id="hero-title" data-hero-title>Praana Yoga</h1>
+        <h1 class="hero__title" id="hero-title" data-hero-title>Praana <em>Yoga</em></h1>
         <p class="hero__lede" data-hero-fade>A little studio with a big heart, on a rooftop in Fort&nbsp;Kochi. Daily Hatha classes at 07:30 and 16:00, open to every body.</p>
         <div class="hero__actions" data-hero-fade>
-          <a class="pill pill--light" href="#visit">Book a class</a>
+          <x-btn href="#visit" variant="light">Book a class</x-btn>
           <a class="hero__link" href="#classes">See the classes</a>
         </div>
       </div>
@@ -134,10 +136,10 @@
     <section class="welcome section section--ivory" id="about" aria-labelledby="intro-title">
       <div class="wrap wrap--narrow center">
         <p class="eyebrow" data-reveal>Welcome to Praana</p>
-        <h2 class="display" id="intro-title" data-split>Breathe. Move. Balance.</h2>
+        <h2 class="display" id="intro-title" data-split>Breathe. Move. <em>Balance.</em></h2>
         <p class="body-lg" data-reveal><em>Praana</em> means breath, the quiet force that moves through everything. Ours is a small rooftop studio in Fort&nbsp;Kochi with a red floor and a painted sun, where yoga is shared as a way of life, not just something you do on the mat.</p>
         <p data-reveal>Whether you are taking your very first sun salutation or working towards your first freestanding handstand, passing through Kochi for a morning or staying for a season, there is a space here for you to grow.</p>
-        <a class="pill pill--dark" href="#story" data-reveal>Our story</a>
+        <x-btn href="#story" variant="dark" data-reveal>Our story</x-btn>
       </div>
       <figure class="welcome__band wrap" data-reveal-img>
         <div class="media media--band" data-parallax="14">
@@ -151,12 +153,12 @@
       <div class="wrap split">
         <figure class="split__media" data-reveal-img>
           <div class="media media--portrait" data-parallax="10">
-            <x-pic name="group-sun" sizes="(min-width: 900px) 44vw, 92vw" alt="Nithin in a split on the red floor with four laughing students posing in front of the studio's painted sun mural"></x-pic>
+            <x-pic name="garden-group" sizes="(min-width: 900px) 44vw, 92vw" alt="Nithin sits cross-legged on a mat, laughing, in front of a big group of students raising their arms under a canopy of green leaves"></x-pic>
           </div>
         </figure>
         <div class="split__text">
           <p class="eyebrow" data-reveal>About the studio</p>
-          <h2 class="display display--md" id="about-title" data-split>A little studio with a big heart</h2>
+          <h2 class="display display--md" id="about-title" data-split>A little studio with a <em>big heart</em></h2>
           <p data-reveal>Praana is a rooftop shala above Mackenzie Lane in Fort Kochi. Classes are intuitive yet structured, rooted in traditional Hatha and taught with the same care for complete beginners and seasoned practitioners alike.</p>
           <p data-reveal>Each session adapts to the bodies in the room. Expect patient, hands-on guidance, a good focus on strength and alignment, and a practice that leaves you calmer than you arrived.</p>
           <dl class="facts" data-reveal>
@@ -164,7 +166,7 @@
             <div><dt>Level</dt><dd>All levels, beginners welcome</dd></div>
             <div><dt>Daily</dt><dd>07:30 &amp; 16:00, 75 minutes</dd></div>
           </dl>
-          <a class="pill pill--dark" href="#teacher" data-reveal>Meet your teacher</a>
+          <x-btn href="#teacher" variant="dark" data-reveal>Meet your teacher</x-btn>
         </div>
       </div>
     </section>
@@ -174,31 +176,35 @@
       <div class="wrap">
         <header class="section-head center">
           <p class="eyebrow eyebrow--light" data-reveal>Daily drop-in</p>
-          <h2 class="display" id="classes-title" data-split>Our Classes</h2>
+          <h2 class="display" id="classes-title" data-split>Our <em>Classes</em></h2>
           <p data-reveal>Every class is 75 minutes, held twice a day on the rooftop. Simply drop in; whatever your level, there is a space for you.</p>
         </header>
 
         <ul class="cards cards--4" data-stagger>
           <li class="card">
             <div class="card__media media"><x-pic name="prasarita" sizes="(min-width: 1100px) 24vw, (min-width: 640px) 45vw, 92vw" alt="A student folds forward into a wide-legged stance on an orange mat in morning sunlight"></x-pic></div>
+            <p class="card__index" aria-hidden="true">01</p>
             <h3 class="card__title">Traditional Hatha</h3>
             <p class="card__meta">Daily · drop in</p>
             <p class="card__text">Classic postures held with patience and breath, building strength, steadiness and ease in equal measure.</p>
           </li>
           <li class="card">
             <div class="card__media media"><x-pic name="nithin-pose" sizes="(min-width: 1100px) 24vw, (min-width: 640px) 45vw, 92vw" alt="Nithin smiling from a seated compression pose, one leg lifted straight beside his head"></x-pic></div>
+            <p class="card__index" aria-hidden="true">02</p>
             <h3 class="card__title">Alignment &amp; Inversions</h3>
             <p class="card__meta">Daily · drop in</p>
             <p class="card__text">Hatha with a focus on precise alignment and the mechanics of going upside down, safely and with confidence.</p>
           </li>
           <li class="card">
             <div class="card__media media"><x-pic name="sea-sunset" sizes="(min-width: 1100px) 24vw, (min-width: 640px) 45vw, 92vw" alt="The sun setting into a calm sea, its light reflected in a long path across the water"></x-pic></div>
+            <p class="card__index" aria-hidden="true">03</p>
             <h3 class="card__title">Pranayama</h3>
             <p class="card__meta">Morning group</p>
             <p class="card__text">Breathwork in a small morning group. Let us know in advance, and arrive thirty minutes early.</p>
           </li>
           <li class="card">
-            <div class="card__media media"><x-pic name="retreat-guidance" sizes="(min-width: 1100px) 24vw, (min-width: 640px) 45vw, 92vw" alt="A teacher steadies a student's legs as she balances in a headstand on a blue mat"></x-pic></div>
+            <div class="card__media media"><x-pic name="private-adjustment" sizes="(min-width: 1100px) 24vw, (min-width: 640px) 45vw, 92vw" alt="Nithin supports a student at the hips as she arches back into a standing backbend"></x-pic></div>
+            <p class="card__index" aria-hidden="true">04</p>
             <h3 class="card__title">Private Sessions</h3>
             <p class="card__meta">By appointment</p>
             <p class="card__text">One-to-one guidance tailored to your body, background and intention, from first steps to advanced postures.</p>
@@ -212,7 +218,7 @@
             <div><dt>Duration</dt><dd>75 min</dd></div>
           </dl>
           <p class="schedule__note">Online classes are available too, live or on demand, so the practice can travel home with you.</p>
-          <a class="pill pill--light" href="#visit">Reserve your mat</a>
+          <x-btn href="#visit" variant="light">Reserve your mat</x-btn>
         </div>
       </div>
     </section>
@@ -227,7 +233,7 @@
         </figure>
         <div class="split__text">
           <p class="eyebrow" data-reveal>One to one</p>
-          <h2 class="display display--md" id="private-title" data-split>A practice shaped around you</h2>
+          <h2 class="display display--md" id="private-title" data-split>A practice shaped around <em>you</em></h2>
           <p data-reveal>Personalised guidance, tailored to your body, your background and your intention. Come to deepen a practice you already love, or to begin one without an audience.</p>
           <ul class="ticks" data-reveal>
             <li>First steps for complete beginners</li>
@@ -237,7 +243,7 @@
             <li>Pranayama &amp; meditation</li>
           </ul>
           <p class="note" data-reveal>By appointment only, and subject to availability.</p>
-          <a class="pill pill--dark" href="mailto:edmindnithin47@gmail.com?subject=Private%20session%20at%20Praana" data-reveal>Request a session</a>
+          <x-btn href="mailto:edmindnithin47@gmail.com?subject=Private%20session%20at%20Praana" variant="dark" data-reveal>Request a session</x-btn>
         </div>
       </div>
     </section>
@@ -247,7 +253,7 @@
       <div class="wrap">
         <header class="section-head center">
           <p class="eyebrow" data-reveal>Beyond the daily mat</p>
-          <h2 class="display" id="journeys-title" data-split>Workshops &amp; Retreats</h2>
+          <h2 class="display" id="journeys-title" data-split>Workshops &amp; <em>Retreats</em></h2>
           <p data-reveal>Deeper practice, in the studio and far beyond it.</p>
         </header>
 
@@ -305,7 +311,7 @@
       <div class="wrap">
         <header class="section-head center">
           <p class="eyebrow" data-reveal>Our philosophy</p>
-          <h2 class="display" id="philosophy-title" data-split>Yogah samatvam asti</h2>
+          <h2 class="display" id="philosophy-title" data-split><em>Yogah samatvam asti</em></h2>
           <p data-reveal>Yoga is balance. Three ideas sit underneath every class.</p>
         </header>
         <ol class="tenets" data-stagger>
@@ -333,7 +339,7 @@
       <div class="wrap">
         <header class="section-head center">
           <p class="eyebrow eyebrow--dark" data-reveal>Kind words</p>
-          <h2 class="display" id="voices-title" data-split>From our students</h2>
+          <h2 class="display" id="voices-title" data-split>From our <em>students</em></h2>
           <p class="rating" data-reveal><strong>5.0</strong> on Tripadvisor from 84 reviews, every one of them “Excellent”.</p>
         </header>
         <ul class="quotes" data-stagger>
@@ -373,7 +379,7 @@
       <div class="wrap visit__grid">
         <div class="visit__intro">
           <p class="eyebrow eyebrow--light" data-reveal>Visit &amp; book</p>
-          <h2 class="display" id="visit-title" data-split>Come as you are</h2>
+          <h2 class="display" id="visit-title" data-split>Come as <em>you are</em></h2>
           <p data-reveal>Choose a class and a day, and your email app will open with the message ready to send. Nithin replies personally.</p>
           <div class="visit__info" data-reveal>
             <div>
@@ -414,7 +420,7 @@
             </label>.
           </p>
           <div class="letter__foot">
-            <button class="pill pill--light" type="submit">Send request</button>
+            <x-btn type="submit" variant="light">Send request</x-btn>
             <p class="letter__help" id="letter-help" data-letter-status>Opens your email app with the message ready to send.</p>
           </div>
         </form>

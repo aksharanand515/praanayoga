@@ -33,6 +33,22 @@ function picture(a) {
 const icon = (a) =>
   `<svg class="icon${a.class ? ` ${a.class}` : ''}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="${icons[a.name]}"/></svg>`;
 
+// <x-btn href="#visit" variant="light" class="…" data-reveal>Book a class</x-btn>
+// -> a pill whose label rolls on hover and whose arrow chip floods the pill.
+// The rolling duplicate is aria-hidden, so the accessible name is the label once.
+// `type="submit"` renders a <button>; `size="sm"` gives the compact nav version.
+function button(s, label) {
+  const a = attrs(s);
+  const { variant = 'dark', size, class: extra, ...rest } = a;
+  const tag = rest.type ? 'button' : 'a';
+  const cls = ['btn', `btn--${variant}`, size && `btn--${size}`, extra].filter(Boolean).join(' ');
+  const passthrough = Object.entries(rest).map(([k, v]) => (v === true ? ` ${k}` : ` ${k}="${v}"`)).join('');
+  return `<${tag} class="${cls}"${passthrough} data-magnetic>` +
+    `<span class="btn__label"><span class="btn__roll"><span>${label}</span><span aria-hidden="true">${label}</span></span></span>` +
+    `<span class="btn__chip" aria-hidden="true">${icon({ name: 'arrow' })}</span>` +
+    `</${tag}>`;
+}
+
 export default defineConfig({
   plugins: [
     {
@@ -42,7 +58,8 @@ export default defineConfig({
         handler: (html) =>
           html
             .replace(/<x-pic\s([^>]*)><\/x-pic>/g, (_, s) => picture(attrs(s)))
-            .replace(/<x-icon\s([^>]*)><\/x-icon>/g, (_, s) => icon(attrs(s))),
+            .replace(/<x-icon\s([^>]*)><\/x-icon>/g, (_, s) => icon(attrs(s)))
+            .replace(/<x-btn\s([^>]*)>([\s\S]*?)<\/x-btn>/g, (_, s, label) => button(s, label.trim())),
       },
     },
   ],
