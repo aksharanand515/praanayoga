@@ -5,6 +5,7 @@ import './styles.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { initLetter } from './letter.js';
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
@@ -326,99 +327,6 @@ function initReveals() {
   });
 }
 
-/* -------------------------------------------------------- the enquiry */
-const WHATSAPP = '918089948747';
-
-function initEnquiry() {
-  const form = $('[data-enquiry]');
-  const status = $('[data-enquiry-status]');
-  const dayGroup = $('[data-day-group]', form);
-  const days = $('[data-days]', form);
-  const other = form.elements.date;
-  const name = form.elements.name;
-  const preview = Object.fromEntries($$('[data-preview]', form).map((el) => [el.dataset.preview, el]));
-  const defaultStatus = status.innerHTML;
-
-  // The next seven days as choices; "Another date" stays for anything further out.
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const iso = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-  other.min = iso(today);
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(today);
-    d.setDate(today.getDate() + i);
-    const label = document.createElement('label');
-    label.className = 'day';
-    const input = document.createElement('input');
-    input.type = 'radio';
-    input.name = 'day';
-    input.value = iso(d);
-    const long = d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
-    input.setAttribute('aria-label', i === 0 ? `Today, ${long}` : i === 1 ? `Tomorrow, ${long}` : long);
-    const body = document.createElement('span');
-    body.className = 'day__body';
-    body.setAttribute('aria-hidden', 'true');
-    const dow = i === 0 ? 'Today' : i === 1 ? 'Tmrw' : d.toLocaleDateString('en-GB', { weekday: 'short' });
-    body.innerHTML = `<span class="day__dow">${dow}</span><span class="day__num">${d.getDate()}</span><span class="day__mon">${d.toLocaleDateString('en-GB', { month: 'short' })}</span>`;
-    label.append(input, body);
-    days.append(label);
-  }
-
-  const chosenDate = () => {
-    const picked = form.querySelector('input[name="day"]:checked');
-    const value = picked ? picked.value : other.value;
-    return value ? new Date(`${value}T00:00`) : null;
-  };
-  const describe = (d) => d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
-  const session = () => form.querySelector('input[name="session"]:checked').value;
-
-  const update = () => {
-    const d = chosenDate();
-    preview.session.textContent = session();
-    preview.day.textContent = d ? describe(d) : '…';
-    preview.name.textContent = name.value.trim() || '…';
-  };
-
-  const settle = () => {
-    if (status.classList.contains('is-error') && chosenDate() && name.value.trim()) {
-      status.classList.remove('is-error');
-      status.innerHTML = defaultStatus;
-    }
-  };
-
-  form.addEventListener('change', (e) => {
-    if (e.target.name === 'day') other.value = '';
-    if (e.target === other && other.value) form.querySelectorAll('input[name="day"]').forEach((r) => { r.checked = false; });
-    if (e.target.name === 'day' || e.target === other) dayGroup.classList.remove('is-invalid');
-    update();
-    settle();
-  });
-  name.addEventListener('input', () => { name.classList.remove('is-invalid'); name.removeAttribute('aria-invalid'); update(); settle(); });
-  update();
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const d = chosenDate();
-    const who = name.value.trim();
-    const missing = [];
-    if (!d) { dayGroup.classList.add('is-invalid'); missing.push('a day'); }
-    if (!who) { name.classList.add('is-invalid'); name.setAttribute('aria-invalid', 'true'); missing.push('your name'); }
-    if (missing.length) {
-      status.textContent = `Please choose ${missing.join(' and ')}.`;
-      status.classList.add('is-error');
-      (d ? name : form.querySelector('input[name="day"]')).focus();
-      return;
-    }
-    const message = `Hello Nithin, I'd like to join ${session()} on ${describe(d)}. My name is ${who}.`;
-    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
-    status.classList.remove('is-error');
-    status.textContent = 'Opening WhatsApp with your message…';
-    const win = window.open(url, '_blank', 'noopener');
-    if (!win) window.location.href = url;
-    setTimeout(() => { if (!status.classList.contains('is-error')) status.innerHTML = defaultStatus; }, 8000);
-  });
-}
-
 // The floating WhatsApp button appears once the hero has been passed.
 function initWhatsAppFloat() {
   const btn = $('[data-wa-float]');
@@ -437,7 +345,7 @@ function initWhatsAppFloat() {
 
 /* ---------------------------------------------------------------- boot */
 $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
-initEnquiry();
+initLetter($('[data-letter]'));
 
 const mm = gsap.matchMedia();
 mm.add(MOTION, () => {
