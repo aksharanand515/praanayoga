@@ -192,5 +192,37 @@
       640,
       1100
     ]
+  },
+  "gallery-shala": {
+    "width": 768,
+    "height": 768,
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "gallery-tea": {
+    "width": 768,
+    "height": 768,
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "gallery-sea": {
+    "width": 640,
+    "height": 640,
+    "widths": [
+      480,
+      640
+    ]
+  },
+  "gallery-lake": {
+    "width": 640,
+    "height": 640,
+    "widths": [
+      480,
+      640
+    ]
   }
 }
