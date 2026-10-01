@@ -382,12 +382,18 @@ html:not(.js) .nav { position: absolute; }
 .schedule__times dd { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 1.6rem + 2vw, 3.4rem); line-height: 1.1; }
 .schedule__note { max-width: 34rem; color: color-mix(in srgb, var(--ivory) 82%, transparent); }
 
+/* ================================================================ TRAINING */
+.training__caption { margin-top: 0.9rem; font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--soft); }
+.training__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; margin-top: 0.75rem; }
+.training__actions .btn { margin-top: 0; }
+.training__actions .text-link { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive); }
+
 /* ================================================================ PHILOSOPHY */
 .tenets { display: grid; gap: clamp(2.5rem, 5vw, 3rem); margin-top: clamp(3rem, 6vw, 5rem); counter-reset: t; }
 @media (min-width: 900px) { .tenets { grid-template-columns: repeat(3, 1fr); } }
 .tenet { display: grid; justify-items: center; gap: 0.8rem; text-align: center; padding: 2.5rem 1.75rem; background: var(--ivory); }
-.tenet__ml { font-size: clamp(2rem, 1.6rem + 1.5vw, 2.75rem); line-height: 1.6; color: var(--olive); }
-.tenet__title { font-family: var(--serif); font-weight: 350; font-size: 1.5rem; display: grid; gap: 0.2rem; }
+.tenet__title { font-family: var(--serif); font-weight: 350; font-size: clamp(1.9rem, 1.6rem + 1vw, 2.4rem); line-height: 1.1; display: grid; gap: 0.35rem; }
+.tenet__ml { font-size: clamp(1.45rem, 1.25rem + 0.6vw, 1.8rem); line-height: 1.5; color: var(--olive); margin-top: -0.2rem; }
 .tenet__title span { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--terracotta-ink); }
 .tenet > p:last-child { color: var(--soft); max-width: 22rem; }
 

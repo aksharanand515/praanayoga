@@ -17,6 +17,7 @@ const OUT = path.join(root, 'public/img');
 // extract: { left, top, width, height } in source pixels
 const images = [
   { name: 'hall', file: 'hall-teaching.jpg', widths: [800, 1280] },
+  { name: 'japan-class', file: 'japan-class.jpg', extract: { left: 880, top: 0, width: 900, height: 1125 }, widths: [600, 900] },
   { name: 'nithin-studio', file: 'nithin-studio-portrait.jpg', extract: { left: 0, top: 0, width: 960, height: 1200 }, widths: [640, 960] },
   { name: 'one-arm-handstand', file: 'one-arm-handstand.jpg', extract: { left: 0, top: 230, width: 680, height: 850 }, widths: [560, 680], grade: 'warm' },
   { name: 'standing-splits', file: 'standing-splits.jpg', extract: { left: 0, top: 50, width: 843, height: 1054 }, widths: [640, 843] },

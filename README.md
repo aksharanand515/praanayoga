@@ -45,6 +45,8 @@ headings keep an unsplit copy for screen readers.
 
 - Services, timings, teacher bio, motto: praanayoga.com.
 - Retreat details and 2027 dates: samyaretreats.com (Nithin's retreat programme). Check dates each season.
+- Teacher training (200-hour, 28 days, €899, 2027 batches): santhiyogaindia.com/teacher-training/,
+  taught with Master Aksharanand A S (Achu) of Santhi School of Yoga & Vedanta Studies.
 - Address, rating (5.0 from 84 reviews) and review excerpts: the studio's public
   Tripadvisor listing, as of September 2026. Update the count as it grows.
 
