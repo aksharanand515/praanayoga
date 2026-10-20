@@ -170,6 +170,9 @@ body::after {
 .text-link .icon { width: 0.95em; height: 0.95em; transition: transform 0.4s var(--ease); }
 .text-link:hover .icon { transform: translate(2px, -2px); }
 .section--ivory .text-link:hover, .section--sand .text-link:hover, .section--white .text-link:hover { color: var(--terracotta-ink); }
+/* Link inside running text: same underline as .text-link, but stays inline so it wraps with the sentence */
+.inline-link { border-bottom: 1px solid currentColor; transition: color 0.3s; }
+.inline-link:hover { color: var(--terracotta-ink); }
 
 /* ---------------------------------------------------------------- media */
 .media { position: relative; overflow: hidden; background: var(--sand); }
