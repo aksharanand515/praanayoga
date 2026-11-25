@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Praana Yoga Studio — Hatha Yoga in Fort Kochi, Kerala</title>
-  <meta name="description" content="A little studio with a big heart on a rooftop in Fort Kochi, Kerala. Daily Hatha yoga classes at 7:30 and 16:00, pranayama, private sessions, handstand workshops and retreats with lead teacher Nithin Xavier.">
+  <meta name="description" content="A little studio with a big heart on a rooftop in Fort Kochi, Kerala. Daily Hatha yoga classes at 7:30 and 16:00, pranayama, private sessions, handstand workshops, retreats and a 200-hour Yoga Teacher Training in February 2027 with lead teacher Nithin Xavier.">
   <link rel="canonical" href="https://praanayoga.com/">
   <meta name="theme-color" content="#F5F0E7">
   <meta name="color-scheme" content="light">
@@ -74,8 +74,8 @@
     <nav class="nav__side nav__side--l" aria-label="Primary">
       <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#classes">Classes</a></li>
         <li><a href="#training">Training</a></li>
+        <li><a href="#classes">Classes</a></li>
       </ul>
     </nav>
     <a class="nav__brand" href="#top" aria-label="Praana Yoga Studio, back to top">
@@ -100,9 +100,9 @@
     <nav aria-label="Menu">
       <ul class="menu__list">
         <li><a href="#about">About</a></li>
+        <li><a href="#training">Teacher training · Feb 2027</a></li>
         <li><a href="#classes">Classes</a></li>
         <li><a href="#retreats">Workshops &amp; retreats</a></li>
-        <li><a href="#training">Teacher training</a></li>
         <li><a href="#teacher">Teacher</a></li>
         <li><a href="#voices">Reviews</a></li>
         <li><a href="#visit">Visit &amp; book</a></li>
@@ -126,16 +126,38 @@
       </div>
       <div class="hero__veil" aria-hidden="true"></div>
       <div class="hero__content" data-hero-content>
-        <p class="hero__eyebrow" data-hero-fade>Fort Kochi <span aria-hidden="true">·</span> Kerala</p>
+        <a class="hero__announce" href="#training" data-hero-fade>
+          <span class="hero__announce-tag">Now enrolling</span>
+          <span class="hero__announce-text"><span class="hero__announce-opt">200-hour </span>Teacher Training <span class="hero__announce-sep" aria-hidden="true">·</span> February 2027</span>
+          <x-icon name="arrow"></x-icon>
+        </a>
         <h1 class="hero__title" id="hero-title" data-hero-title>Praana <em>Yoga</em></h1>
-        <p class="hero__lede" data-hero-fade>A little studio with a big heart, on a rooftop in Fort&nbsp;Kochi. Daily Hatha classes at 07:30 and 16:00, open to every body.</p>
+        <p class="hero__lede" data-hero-fade>This February, train to teach on our rooftop in Fort&nbsp;Kochi. Twenty-eight days of Hatha, pranayama, philosophy and teaching practice with Nithin and Achu, from 1&nbsp;to&nbsp;28&nbsp;February&nbsp;2027.</p>
         <div class="hero__actions" data-hero-fade>
-          <x-btn href="#visit" variant="light">Book a class</x-btn>
-          <a class="hero__link" href="#classes">See the classes</a>
+          <x-btn href="#training" variant="light">Join the February training</x-btn>
+          <a class="hero__link" href="#classes">Or drop in to a daily class</a>
         </div>
       </div>
+      <aside class="hero__card" aria-label="Next teacher training" data-hero-fade>
+        <p class="hero__card-eyebrow">Next intake</p>
+        <p class="hero__card-title">Yoga Teacher Training</p>
+        <dl class="hero__card-facts">
+          <div><dt>Dates</dt><dd><time datetime="2027-02-01">1</time>–<time datetime="2027-02-28">28 Feb 2027</time></dd></div>
+          <div><dt>Hours</dt><dd>200, over 28 days</dd></div>
+          <div><dt>Fee</dt><dd>€899 all-inclusive</dd></div>
+        </dl>
+        <a class="hero__card-link" href="https://santhiyogaindia.com/reserve/?batch=February" target="_blank" rel="noopener">Reserve a place <x-icon name="arrow-up-right"></x-icon><span class="sr-only"> (opens in a new tab)</span></a>
+      </aside>
       <a class="hero__scroll" href="#about" data-hero-fade><span>Scroll</span><span class="hero__scroll-line" aria-hidden="true"></span></a>
     </section>
+
+    <!-- ─────────────────────────────── Announcement band -->
+    <a class="band" href="#training" aria-label="200-hour Yoga Teacher Training, 1 to 28 February 2027 in Fort Kochi. Read more.">
+      <span class="band__track" aria-hidden="true">
+        <span>200-hour Teacher Training</span><span class="band__dot"></span><span><em>1–28 February 2027</em></span><span class="band__dot"></span><span>Fort Kochi, Kerala</span><span class="band__dot"></span><span><em>with Nithin &amp; Achu</em></span><span class="band__dot"></span><span>€899 all-inclusive</span><span class="band__dot"></span>
+        <span>200-hour Teacher Training</span><span class="band__dot"></span><span><em>1–28 February 2027</em></span><span class="band__dot"></span><span>Fort Kochi, Kerala</span><span class="band__dot"></span><span><em>with Nithin &amp; Achu</em></span><span class="band__dot"></span><span>€899 all-inclusive</span><span class="band__dot"></span>
+      </span>
+    </a>
 
     <!-- ─────────────────────────────── Intro -->
     <section class="welcome section section--ivory" id="about" aria-labelledby="intro-title">
@@ -172,6 +194,40 @@
             <div><dt>Daily</dt><dd>07:30 &amp; 16:00, 75 minutes</dd></div>
           </dl>
           <x-btn href="#teacher" variant="dark" data-reveal>Meet your teacher</x-btn>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────── Teacher training -->
+    <section class="training section section--white" id="training" aria-labelledby="training-title">
+      <div class="wrap split">
+        <figure class="split__media" data-reveal-img>
+          <div class="media media--portrait" data-parallax="10">
+            <x-pic name="retreat-founders" sizes="(min-width: 900px) 44vw, 92vw" style="object-position: 50% 30%" alt="Nithin Xavier and Achu smiling side by side by a river in the Kerala hills"></x-pic>
+          </div>
+          <figcaption class="training__caption">Nithin &amp; Achu</figcaption>
+        </figure>
+        <div class="split__text">
+          <p class="eyebrow" data-reveal>Teacher training · with Santhi Yoga</p>
+          <h2 class="display display--md" id="training-title" data-split>This February, become a <em>teacher</em></h2>
+          <p class="body-lg" data-reveal>A <a class="inline-link" href="https://santhiyogaindia.com/teacher-training/" target="_blank" rel="noopener">200-hour Yoga Teacher Training in Fort Kochi, Kerala</a>, taught together by Nithin Xavier and Master Aksharanand A S, known to his students as Achu, of Santhi School of Yoga &amp; Vedanta Studies.</p>
+          <p data-reveal>Twenty-eight days of Hatha Yoga, Vinyasa, asana, pranayama, meditation, yoga philosophy and teaching methodology, for sincere practitioners who want a traditional foundation, whether you plan to teach or simply wish to understand yoga more fully.</p>
+          <dl class="facts" data-reveal>
+            <div><dt>Duration</dt><dd>28 days, 200 hours</dd></div>
+            <div><dt>Fee</dt><dd>€899 all-inclusive · €90 holds your place</dd></div>
+          </dl>
+          <ul class="batches" aria-label="2027 batches" data-reveal>
+            <li><span class="batches__m">January</span><span class="batches__d">1–28 Jan</span></li>
+            <li class="is-featured"><span class="batches__m">February</span><span class="batches__d">1–28 Feb</span><span class="batches__tag">Now enrolling</span></li>
+            <li><span class="batches__m">April</span><span class="batches__d">1–28 Apr</span></li>
+            <li><span class="batches__m">June</span><span class="batches__d">1–28 Jun</span></li>
+          </ul>
+          <p class="note" data-reveal>Includes certification, study materials, accommodation in Fort Kochi, three sattvic meals a day, Ayurvedic tea and cultural excursions.</p>
+          <div class="training__actions" data-reveal>
+            <x-btn href="https://santhiyogaindia.com/reserve/?batch=February" target="_blank" rel="noopener" variant="dark">Reserve February</x-btn>
+            <a class="text-link" href="https://santhiyogaindia.com/teacher-training/" target="_blank" rel="noopener">Full programme <x-icon name="arrow-up-right"></x-icon><span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="text-link" href="https://wa.me/918089948747?text=Hello%20Nithin%20and%20Achu%2C%20I'd%20like%20to%20ask%20about%20the%20200-hour%20Yoga%20Teacher%20Training." target="_blank" rel="noopener">Ask on WhatsApp <x-icon name="arrow-up-right"></x-icon><span class="sr-only"> (opens WhatsApp)</span></a>
+          </div>
         </div>
       </div>
     </section>
@@ -289,34 +345,6 @@
             <a class="text-link" href="https://samyaretreats.com/" target="_blank" rel="noopener">Explore Samya Retreats <x-icon name="arrow-up-right"></x-icon><span class="sr-only"> (opens in a new tab)</span></a>
           </li>
         </ul>
-      </div>
-    </section>
-
-    <!-- ─────────────────────────────── Teacher training -->
-    <section class="training section section--white" id="training" aria-labelledby="training-title">
-      <div class="wrap split">
-        <figure class="split__media" data-reveal-img>
-          <div class="media media--portrait" data-parallax="10">
-            <x-pic name="retreat-founders" sizes="(min-width: 900px) 44vw, 92vw" style="object-position: 50% 30%" alt="Nithin Xavier and Achu smiling side by side by a river in the Kerala hills"></x-pic>
-          </div>
-          <figcaption class="training__caption">Nithin &amp; Achu</figcaption>
-        </figure>
-        <div class="split__text">
-          <p class="eyebrow" data-reveal>Teacher training · with Santhi Yoga</p>
-          <h2 class="display display--md" id="training-title" data-split>Become a <em>teacher</em></h2>
-          <p class="body-lg" data-reveal>A <a class="inline-link" href="https://santhiyogaindia.com/teacher-training/" target="_blank" rel="noopener">200-hour Yoga Teacher Training in Fort Kochi, Kerala</a>, taught together by Nithin Xavier and Master Aksharanand A S, known to his students as Achu, of Santhi School of Yoga &amp; Vedanta Studies.</p>
-          <p data-reveal>Twenty-eight days of Hatha Yoga, Vinyasa, asana, pranayama, meditation, yoga philosophy and teaching methodology, for sincere practitioners who want a traditional foundation, whether you plan to teach or simply wish to understand yoga more fully.</p>
-          <dl class="facts" data-reveal>
-            <div><dt>Duration</dt><dd>28 days, 200 hours</dd></div>
-            <div><dt>Fee</dt><dd>€899 all-inclusive</dd></div>
-            <div><dt>2027</dt><dd>1–28 January · February · April · June</dd></div>
-          </dl>
-          <p class="note" data-reveal>Includes certification, study materials, accommodation in Fort Kochi, three sattvic meals a day, Ayurvedic tea and cultural excursions.</p>
-          <div class="training__actions" data-reveal>
-            <x-btn href="https://santhiyogaindia.com/teacher-training/" target="_blank" rel="noopener" variant="dark">Explore the training</x-btn>
-            <a class="text-link" href="https://wa.me/918089948747?text=Hello%20Nithin%20and%20Achu%2C%20I'd%20like%20to%20ask%20about%20the%20200-hour%20Yoga%20Teacher%20Training." target="_blank" rel="noopener">Ask on WhatsApp <x-icon name="arrow-up-right"></x-icon><span class="sr-only"> (opens WhatsApp)</span></a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -455,7 +483,7 @@
                 <option value="a handstand workshop" data-note="Drills and technique for every level, from first attempts upward.">a handstand workshop</option>
                 <option value="an online class" data-note="Live or on demand, wherever you are in the world.">an online class</option>
                 <option value="a Samya retreat in Kerala" data-note="Seven days: the sea at Fort Kochi, then the tea hills of Munnar.">a Samya retreat in Kerala</option>
-                <option value="the 200-hour Teacher Training" data-note="28 days in Fort Kochi with Nithin and Achu, €899 all-inclusive.">the 200-hour Teacher Training</option>
+                <option value="the 200-hour Teacher Training" data-note="1–28 February 2027 in Fort Kochi with Nithin and Achu, €899 all-inclusive.">the 200-hour Teacher Training</option>
               </select>
             </span>
             on
@@ -543,7 +571,7 @@
       </div>
       <div class="footer__base">
         <p>© <span data-year>2026</span> Praana Yoga Studio</p>
-        <p>Photography: Praana Yoga Studio &amp; Samya Retreats</p>
+        <p>Photography: Praana Yoga Studio &amp; Samya Retreats · <a href="/terms/">Terms &amp; conditions</a></p>
         <a class="footer__top" href="#top">Back to top <x-icon name="arrow" class="icon--up"></x-icon></a>
       </div>
     </div>
