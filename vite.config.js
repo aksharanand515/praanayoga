@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 // Expands two authoring shorthands in index.html at build (and dev) time, so the
 // shipped page is plain, static, crawlable markup:
@@ -69,5 +70,13 @@ export default defineConfig({
       },
     },
   ],
-  build: { target: 'es2020', cssMinify: true, assetsInlineLimit: 0 },
+  build: {
+    target: 'es2020', cssMinify: true, assetsInlineLimit: 0,
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        terms: fileURLToPath(new URL('./terms/index.html', import.meta.url)),
+      },
+    },
+  },
 });
