@@ -36,6 +36,9 @@ the form with the message pre-written. The number lives in `WHATSAPP` in
   intro and scroll parallax, word-by-word heading reveals, image reveals,
   staggered cards, nav states (transparent over the hero, olive over olive
   sections), mobile menu.
+- `terms/index.html` — Terms & conditions (incl. the photography / filming for
+  social media clause), styled by `src/styles.css` and loaded via `src/page.js`.
+  Built as a second Vite input (see `vite.config.js`).
 - `src/letter.js` — the booking letter: fill-in-the-blank sentence, listbox and
   calendar popovers (keyboard accessible, native inputs kept as fallback), sent
   to WhatsApp as a pre-written letter.
@@ -48,7 +51,8 @@ headings keep an unsplit copy for screen readers.
 
 - Services, timings, teacher bio, motto: praanayoga.com.
 - Retreat details and 2027 dates: samyaretreats.com (Nithin's retreat programme). Check dates each season.
-- Teacher training (200-hour, 28 days, €899, 2027 batches): santhiyogaindia.com/teacher-training/,
+- Teacher training (200-hour, 28 days, €899, 2027 batches; February 2027 is featured
+  in the hero, the band under it and the training section — update when it fills): santhiyogaindia.com/teacher-training/,
   taught with Master Aksharanand A S (Achu) of Santhi School of Yoga & Vedanta Studies.
 - Address, rating (5.0 from 84 reviews) and review excerpts: the studio's public
   Tripadvisor listing, as of September 2026. Update the count as it grows.
